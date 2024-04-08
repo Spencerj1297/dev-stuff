@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #000000;
+  color: rgba(245, 245, 245, 0.692);
+  letter-spacing: 2px;
+  line-height: 65px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blinking-arrow {
+  animation: blink 2s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(-100% + 100vw));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+.scrolling-container {
+  display: flex;
+  animation: scrollRight 500s linear infinite;
+  will-change: transform;
+}
