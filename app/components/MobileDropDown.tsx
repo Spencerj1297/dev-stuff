@@ -14,8 +14,8 @@ export const MobileDropDown: React.FC<Props> = ({ setMobileDropOpen }) => {
          <button onClick={() => setMobileDropOpen(false)}>All</button> 
         </Link>
         </li>
-        <li>Shirts</li>
-        <li>Stickers</li>
+        <li>Mice</li>
+        <li>Keyboard</li>
         <li className="mt-8">
           <Link href="/checkout">
           <button className="bg-green text-black text-2xl w-[318px] h-[64px] bg-opacity-80 hover:bg-opacity-100">

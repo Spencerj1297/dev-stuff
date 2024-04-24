@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ProductCar } from "./components/productCar";
 import { Intro } from "./components/Intro";
 

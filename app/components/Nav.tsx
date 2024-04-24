@@ -17,7 +17,7 @@ export const Nav: React.FC = () => {
 
   return (
     <>
-      <div className="fixed right-0  w-full flex flex-row items-center py-1 lg:py-4 px-2 lg:px-8">
+      <div className="fixed right-0 z-50 w-full flex flex-row items-center py-1 lg:py-4 px-2 lg:px-8">
         <div>
           <Link href="/">
             <div className="flex justify-center items-center gap-2 rounded-md text-[30px] font-bold">
