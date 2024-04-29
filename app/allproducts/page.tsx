@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-// import { HashLoader } from "react-spinners";
 import { IconAdjustmentsHorizontal } from "@tabler/icons-react";
 import Image from "next/image";
 import { Product } from "../types";
 
 const AllProducts = () => {
   const [products, setProducts] = useState<Product[] | undefined>(undefined);
-  //   const { loading, setLoading } = useMainContext();
   const [showFilterDrop, setShowFilterDrop] = useState(false);
 
   useEffect(() => {
@@ -18,22 +16,31 @@ const AllProducts = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
-  //   const setLowToHigh = () => {
-  //     const sorted = [...products].sort((a, b) => a.price - b.price);
-  //     setProducts(sorted);
-  //   };
+const filterProducts = (opt: string) => {
+  const filteredProducts = products?.filter((prod) => prod.product_type === opt)
+  setProducts(filteredProducts)
+}
 
-  //   const setHighToLow = () => {
-  //     const sorted = [...products].sort((a, b) => b.price - a.price);
-  //     setProducts(sorted);
-  //   };
+  const renderFilterOptions = () => {
+    let options = ['keyboard', 'mouse', 'headset', 'accessories']
+   
+    return(
+      options.map(( opt, ind) => (
+        <li
+        key={ind}
+        >
+          <button
+          className="hover:text-bubble-gum"
+          onClick={() => filterProducts(opt)}
+          >{opt}</button>
+        </li>
+      ))
+    )
+  }
+
+  console.log("products", products)
 
   return (
-    //   loading ? (
-    //     <div className="h-screen flex justify-center items-center text-white">
-    //       {/* <HashLoader color="white" /> */}
-    //     </div>
-    //   ) : (
     <>
       <div className="md:hidden flex-col px-4 lg:py-44">
         <button
@@ -43,37 +50,12 @@ const AllProducts = () => {
           filter by
           <IconAdjustmentsHorizontal />
         </button>
-        {showFilterDrop ? (
-          <div className="fixed top-[120px] flex flex-col justify-center items-center w-[91%] bg-black border border-gray-darker rounded-lg text-white py-2 z-20">
-            <button
-            // onClick={() => {
-            //   setLowToHigh()
-            //   setShowFilterDrop(false)
-            // }}
-            >
-              low to high
-            </button>
-            <div className="w-[30%] bg-gray-darker h-[1px] my-1"></div>
-            <button
-            //  onClick={() => {
-            //   setHighToLow()
-            //   setShowFilterDrop(false)
-            // }}
-            >
-              high to low
-            </button>
-          </div>
-        ) : (
-          <></>
-        )}
       </div>
       <div className="flex w-full lg:py-44">
         <div className="hidden md:block pt-16 pl-8 h-screen w-72">
           <h1 className="text-gray text-2xl mb-8">Stuff</h1>
           <ul className="flex flex-col gap-4 text-white text-[20px] font-bold">
-            <li className="">Mice</li>
-            <li className="">Keyboards</li>
-            <li>accessories</li>
+            {renderFilterOptions()}
           </ul>
           <h2 className="text-gray text-2xl mt-16 mb-8">Sort by</h2>
           <ul className="flex flex-col gap-4 text-white text-[20px] font-bold">
@@ -87,7 +69,7 @@ const AllProducts = () => {
         </div>
         <div className="flex flex-row flex-wrap w-full py-16 px-4 lg:px-0 mb-16 gap-6">
           {products?.map((product) => (
-            <Link href={`/product/`}>
+            <Link href={`/product`}>
               <button
                 onClick={() =>
                   sessionStorage.setItem("key", JSON.stringify(product.id))

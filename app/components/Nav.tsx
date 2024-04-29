@@ -9,12 +9,6 @@ export const Nav: React.FC = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [mobileDropOpen, setMobileDropOpen] = useState<boolean>(false);
 
-  const links = [
-    { title: "All", linkTo: "/allproducts" },
-    { title: "Mice", linkTo: "/allproducts" },
-    { title: "Keyboards", linkTo: "/allproducts" },
-  ];
-
   return (
     <>
       <div className="fixed right-0 z-50 w-full flex flex-row items-center py-1 lg:py-4 px-2 lg:px-8">
@@ -29,17 +23,16 @@ export const Nav: React.FC = () => {
 
         <div className="flex items-center ml-auto gap-6">
           <div className="hidden md:flex flex-row text-gray text-[25px]">
-            {links.map((link, idx) => (
+          
               <Link
-                key={idx}
-                href={link.linkTo}
+                href={"/allproducts"}
                 className="flex justify-center items-center"
               >
                 <button className="flex justify-center items-center hover:text-green cursor-pointer border-r border-green px-4 h-6">
-                 {link.title}
+                  all products
                 </button>
               </Link>
-            ))}
+    
           </div>
 
           <button className="md:hidden text-white">
