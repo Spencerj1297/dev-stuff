@@ -1,22 +1,10 @@
-"use client";
-import React, { FC, useEffect, useRef, useState } from "react";
-import {
-  IconMinus,
-  IconPlus,
-  IconSquareRoundedX,
-  IconX,
-} from "@tabler/icons-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { IconX } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Product } from "../types";
-import Image from "next/image";
 import Link from "next/link";
 
-interface Props {
-  setOpen: (value: boolean) => void;
-}
-
-export const DropDownCart: FC<Props> = ({ setOpen }) => {
-  const dropdownRef = useRef<HTMLDivElement>(null);
+export const CheckoutSummary = () => {
   const [cart, setCart] = useState<any[]>([]);
 
   const findProductById = (products: Product[], cartProductIds: number[]) => {
@@ -51,30 +39,6 @@ export const DropDownCart: FC<Props> = ({ setOpen }) => {
       .catch((error) => console.error("Error fetching product:", error));
   }, []);
 
-
-
-
-
-  // const removeFromCart = (index: number) => {
-  //   let cartItemsString = sessionStorage.getItem("cartItems");
-  //   let cartItems: number[] = [];
-
-  //   if (cartItemsString !== null) {
-  //     cartItems = JSON.parse(cartItemsString);
-  //   }
-
-  //   let indexToRemove = cartItems[index + 1];
-
-  //   if (indexToRemove !== -1) {
-  //     cartItems.splice(indexToRemove, 1);
-  //   }
-
-  //   sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
-  //   setOpen(false);
-  // };
-
-
-
   const getTitle = () => {
     const [titleCounts, setTitleCounts] = useState<{ [key: string]: number }>(
       {}
@@ -89,20 +53,13 @@ export const DropDownCart: FC<Props> = ({ setOpen }) => {
     }, [cart]);
 
     const uniqueTitles = Object.keys(titleCounts);
-    console.log(uniqueTitles);
+
     return uniqueTitles.map((title, index) => (
       <p
         key={index}
         className="font-bold flex justify-between items-center w-full"
       >
         <span>{title}</span>
-        <button 
-        className="hover:bg-grey rounded-md hover:text-black">
-          {/* <IconMinus onClick={() => removeFromCart(index)} /> */}
-        </button>
-        <button className="hover:bg-grey rounded-md hover:text-black">
-          <IconPlus />
-        </button>
         <span className="flex items-center">
           <IconX />
           <span>{titleCounts[title]}</span>
@@ -131,19 +88,10 @@ export const DropDownCart: FC<Props> = ({ setOpen }) => {
   };
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ x: 300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: -300, opacity: 0 }}
-        ref={dropdownRef}
-        className="w-96 fixed top-28 right-10 border py-16 px-8 bg-black rounded-xl z-30"
-      >
-        <div className="h-full w-full flex flex-col gap-2">
+      <motion.div className="px-8 rounded-xl z-20">
+        <div className="h-full flex flex-col gap-2">
           <h2 className="text-4xl">Summary</h2>
-          <div className="flex flex-col justify-center items-center w-full">
-            {getTitle()}
-          </div>
+          <div className="flex justify-center items-center">{getTitle()}</div>
           <div className="flex justify-between">
             <p>Subtotal:</p>
             {getTotal()}
@@ -160,32 +108,26 @@ export const DropDownCart: FC<Props> = ({ setOpen }) => {
             <p className="text-xl">Total:</p>
             {getTotalWithShipping()}
           </div>
-          <Link href="/checkout">
-            <button
-              onClick={() => setOpen(false)}
-              className="bg-green text-black text-2xl p-4 mt-8 bg-opacity-80 hover:bg-opacity-100 w-full"
-            >
-              Checkout
-            </button>
-          </Link>
+          <button className="bg-green text-black text-2xl p-4 mt-8 bg-opacity-80 hover:bg-opacity-100 w-full">
+            Place Order
+          </button>
           <div className="flex justify-center items-center mt-8">
             <p>
               Checkout devStuff{" "}
               <Link href="/terms">
-                <span className="text-green hover:cursor-pointer hover:underline">
-                  Terms
-                </span>{" "}
+              <span className="text-green hover:cursor-pointer hover:underline">
+                Terms
+              </span>{" "}
               </Link>
               and{" "}
               <Link href="/terms">
-                <span className="text-green hover:cursor-pointer hover:underline">
-                  Services
-                </span>
+              <span className="text-green hover:cursor-pointer hover:underline">
+                Services
+              </span>
               </Link>
             </p>
           </div>
         </div>
       </motion.div>
-    </AnimatePresence>
   );
 };

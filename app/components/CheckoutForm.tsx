@@ -2,7 +2,7 @@ export const CheckoutForm = () => {
   const inputStyles = "bg-black border border-customGrey h-12 px-4 text-xl";
 
   return (
-    <div className="h-full w-full flex justify-center items-center">
+    <div className="h-full w-full flex justify-center items-center z-30">
       <form className="flex flex-col w-full">
         <div className="flex flex-col">
           <h2>Name</h2>

@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const About = () => {
+const About = () => {
   return (
-    <div className='w-full h-screen bg-black'>
-
+    <div className='flex justify-center items-center w-full h-screen bg-black text-white text-2xl'>
+      <p>I like computer stuff...</p>
     </div>
   )
 }
+
+export default About

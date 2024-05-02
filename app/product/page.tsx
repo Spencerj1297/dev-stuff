@@ -90,6 +90,7 @@ const ProductPage = () => {
       <div className="flex justify-center items-center mt-16 mb-32 px-2 lg:px-72">
         <button
           onClick={renderSuccess}
+          disabled={addToCart}
           className={`flex justify-center items-center gap-3 ${addToCart ? "bg-black text-green" : "bg-green text-black"} text-2xl p-4 mt-8 bg-opacity-80 hover:bg-opacity-100 w-full font-bold`}
         >
           {addToCart ? (

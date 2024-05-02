@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
 import { Nav } from "./components/Nav";
+import { Footer } from "./components/Footer";
 
 const oswald = Oswald({
   weight: '200',
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className={oswald.className}>
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

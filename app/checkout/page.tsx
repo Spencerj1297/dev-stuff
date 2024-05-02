@@ -4,26 +4,12 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Product } from "../types";
 import { CheckoutForm } from "../components/CheckoutForm";
+import Image from "next/image";
+import logo from "../assets/logo.png";
+import { CheckoutSummary } from "../components/CheckoutSummary";
 
 const Checkout = () => {
   const [cart, setCart] = useState<any[]>([]);
-
-  // STEPS TO FIX CART
-  // 1. Need to account for getting an array of items instead of one
-  // 2. Need to display items with x quanity for how many exisit in the array
-  // 3. To remove items. Add + and - to change qaunity of item.
-  // 4. If added push into local host array else if delete one of the items correlating with the id.
-  // Fix cart open and close
-
-  // const getTotal = () => {
-  //   if (products){
-  //     const total = (products?.price + 5.99).toFixed(2);
-  //     return `$${parseFloat(total)}`;
-  //   }else {
-  //     return "..."
-  //   }
-
-  // }
 
   const findProductById = (products: Product[], cartProductIds: number[]) => {
     let cart = [];
@@ -118,7 +104,7 @@ const Checkout = () => {
 
   const getTotalWithShipping = () => {
     let total = 0;
-    const shippingFee = 5.99; // Declare tax as a number
+    const shippingFee = 5.99;
     cart.forEach((item) => {
       total += item.price;
     });
@@ -128,52 +114,25 @@ const Checkout = () => {
   };
 
   return (
-    <div className="h-full w-full flex p-16">
-      <div className="h-full w-1/2 py-32">
-        <CheckoutForm /> 
+    <>
+      <div className="h-full w-full flex flex-col lg:flex-row justify-center items-center p-4 lg:p-16 z-20 text-white">
+        <div className="h-full w-full lg:w-1/2 py-32 z-20">
+          <CheckoutForm />
+        </div>
+        <div className="h-full w-full lg:w-1/2 py-32 z-20">
+          <CheckoutSummary />
+        </div>
       </div>
-      <div className="h-full w-1/2 py-32">
-        <motion.div className="px-8 rounded-xl z-30">
-          <div className="h-full flex flex-col gap-2">
-            <h2 className="text-4xl">Summary</h2>
-            <div className="flex justify-center items-center">
-              {getTitle()}
-            </div>
-            <div className="flex justify-between">
-              <p>Subtotal:</p>
-              {getTotal()}
-            </div>
-            <div className="flex justify-between">
-              <p>Estimated Shipping:</p>
-              <p>${"5.99"}</p>
-            </div>
-            <div className="flex justify-between border-b">
-              <p>Taxes:</p>
-              <p>${"0"}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-xl">Total:</p>
-              {getTotalWithShipping()}
-            </div>
-            <button className="bg-green text-black text-2xl p-4 mt-8 bg-opacity-80 hover:bg-opacity-100 w-full">
-              Place Order
-            </button>
-            <div className="flex justify-center items-center mt-8">
-              <p>
-                Checkout devStuff{" "}
-                <span className="text-green hover:cursor-pointer hover:underline">
-                  Terms
-                </span>{" "}
-                and{" "}
-                <span className="text-green hover:cursor-pointer hover:underline">
-                  Services
-                </span>
-              </p>
-            </div>
-          </div>
-        </motion.div>
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-grey/[.15] w-fit p-6 lg:p-24 z-0 rounded-full">
+        <Image
+          src={logo}
+          width={420}
+          height={420}
+          alt="different Color devStuff shirts"
+          className="z-0"
+        />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import { Intro } from "./components/Intro";
 export default function Home() {
   return (
     <>
-      <main className="lg:h-screen w-screen pt-16 lg:pt-32 z-10">
+      <main className=" w-screen pt-16 lg:pt-32 z-10">
         <video
           autoPlay
           playsInline

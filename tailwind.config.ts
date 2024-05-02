@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       boxShadow: {
-        'bright-purple': '0 0 10px 0 rgba(150, 0, 255, 0.7)', // Adjust the values as needed
+        customShadow: "12px 12px 2px 1px rgba(80, 200, 120, .50)",
       },
       backgroundImage: {
         // "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -28,6 +28,7 @@ const config: Config = {
         'silver': '#ecebff',
         'bubble-gum': '#ff77e9',
         'bermuda': '#78dcca',
+        'grey': "#F5F5F5B0"
       },
     },
   },

@@ -24,7 +24,7 @@ export const ProductCar = () => {
     <motion.section
       // Parallax that doesnt look right
       // style={{ y }}
-      className="flex items-center w-full h-screen overflow-x-hidden z-0"
+      className="flex items-center w-full overflow-x-hidden"
     >
       <div
         className="scrolling-container"
@@ -39,14 +39,17 @@ export const ProductCar = () => {
             key={index}
           >
             <Link href={`/product`}>
-              <button onClick={() => sessionStorage.setItem('key', JSON.stringify(product.id))}>
+              <button 
+              className="flex flex-col gap-4 justify-center items-center text-black hover:text-white"
+              onClick={() => sessionStorage.setItem('key', JSON.stringify(product.id))}>
                 <Image
-                  className="max-h-72 max-w-72 hover:scale-110 transition-transform duration-300 ease-in-out z-0 relative cursor-pointer "
+                  className="max-h-72 max-w-72 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer "
                   src={require(`../assets/${product?.image?.photo_one}`)}
                   width={500}
                   height={500}
                   alt="different Color devStuff shirts"
                 />
+                <p className="text-lg font-black">{product?.title}</p>
               </button>
             </Link>
           </div>
