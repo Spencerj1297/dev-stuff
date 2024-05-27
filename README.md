@@ -1,6 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevStuff
 
-## Getting Started
+Welcome to DevStuff, an e-commerce platform for tech enthusiasts! This project is a demonstration of a full-stack web application built with modern technologies, and it will eventually serve as the online store for my clothing brand, DevStuff.
+
+
+### Table of Contents
+---
+- About
+- Features
+- Technologies
+- Installation
+
+---
+
+### About
+DevStuff is an e-commerce website designed to sell tech-related products. Currently, the platform features placeholder products such as keyboards, mice, and accessories. The ultimate goal is to transition these placeholders into actual products from my clothing brand, DevStuff. This brand will offer apparel specifically targeted at coders and tech enthusiasts.
+
+---
+
+### Features
+Product Listings: Browse through a variety of tech accessories, including keyboards, mice, and more.
+Product Details: View detailed information about each product.
+Shopping Cart: Add items to your cart and manage your selections.
+Checkout: Securely purchase items using Stripe for payment processing.
+User Authentication: Sign up and log in to manage your orders and personal information.
+
+---
+
+### Technologies
+#### Frontend
+  - Next.js - React framework for server-side rendering and static site generation
+  - React - JavaScript library for building user interfaces
+  - Tailwind/CSS - For scoped and modular CSS
+  
+#### Backend:
+  - Node.js - JavaScript runtime for the server
+  - Express - Web framework for Node.js
+
+#### Frameworks/Libraries  
+  - Stripe - Payment gateway for handling transactions
+
+---
+
+### Getting Started
 
 First, run the development server:
 
@@ -15,22 +56,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
