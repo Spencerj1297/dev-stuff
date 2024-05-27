@@ -32,7 +32,7 @@ User Authentication: Sign up and log in to manage your orders and personal infor
   - React - JavaScript library for building user interfaces
   - Tailwind/CSS - For scoped and modular CSS
   
-#### Backend:
+#### Backend (backend repo: dev-stuff-backend)
   - Node.js - JavaScript runtime for the server
   - Express - Web framework for Node.js
 
